@@ -6,7 +6,7 @@
 /*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 12:07:02 by emagnani          #+#    #+#             */
-/*   Updated: 2024/07/23 21:17:23 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/07/24 21:13:36 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,22 @@ void	are_characters_valid(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]) || ft_isspace(str[i]) || str[i] == 43)
+		if (ft_isdigit(str[i]) || ft_isspace(str[i])
+			|| str[i] == '+' || str[i] == '-')
 			i++;
 		else
 			exit_and_print_errors("invalid inputs: non-numerical character");
 	}
 }
 
-void	str_args(char *str)
+char	**str_args(char *str)
 {
+	char	**array;
+
 	are_characters_valid(str);
 	printf("the string is valid");
-	// if (check_repeating_digits(str)
+	array = ft_split(str, ' ');
+	return (array);
 
 }
 
@@ -73,21 +77,46 @@ void	str_args(char *str)
 	else
 		return (1);
 } */
+void	value_to_list(long value)
+{
+	t_stack	*new_node;
+
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		new_node = ft_free_null(new_node);
+
+	new_node->value = value;
+	new_node->value = NULL;
+	new_node->prev = NULL;
+	
+}
+
+void	convert_and_append(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		value_to_list(ft_atol(array[i]));
+		i++;
+	}
+}
 
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	char	**array;
 
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1 || !argv[1][0])
 		exit_and_print_errors("invalid input: not enough arguments");
 	else if (argc == 2)
-		str_args(argv[1]);
-	// else if (!parsing(argv[1]))
-	// 	ft_printf("invalid input: wrong format or repeating numbers.");
-	else
-		ft_printf("good!");
+		array = str_args(argv[1]);
+	else if (argc > 2)
+		(void)argv;
+	convert_and_append(array);
 	return (0);
 }
