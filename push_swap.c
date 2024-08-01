@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 12:07:02 by emagnani          #+#    #+#             */
-/*   Updated: 2024/07/24 21:13:36 by emagnani         ###   ########.fr       */
+/*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
+/*   Updated: 2024/08/01 23:02:06 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,20 @@ char	**str_args(char *str)
 
 }
 
+char	**multiple_args(char **array)
+{
+	int	i;
+
+	i = 1;
+	while (array[i])
+	{
+		are_characters_valid(array[i]);
+		i++;
+	}
+	printf("the string is valid");
+	return (array);
+}
+
 /* int	parsing(char *inputs)
 {
 	char	**split_inputs;
@@ -77,6 +91,7 @@ char	**str_args(char *str)
 	else
 		return (1);
 } */
+
 void	value_to_list(long value)
 {
 	t_stack	*new_node;
@@ -86,9 +101,9 @@ void	value_to_list(long value)
 		new_node = ft_free_null(new_node);
 
 	new_node->value = value;
-	new_node->value = NULL;
-	new_node->prev = NULL;
-	
+	new_node->value = 0;
+	new_node->prev = 0;
+
 }
 
 void	convert_and_append(char **array)
@@ -103,6 +118,7 @@ void	convert_and_append(char **array)
 	}
 }
 
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -111,12 +127,13 @@ int	main(int argc, char **argv)
 
 	stack_a = NULL;
 	stack_b = NULL;
+	array = NULL;
 	if (argc == 1 || !argv[1][0])
 		exit_and_print_errors("invalid input: not enough arguments");
 	else if (argc == 2)
 		array = str_args(argv[1]);
 	else if (argc > 2)
-		(void)argv;
+		array = multiple_args(argv);
 	convert_and_append(array);
 	return (0);
 }

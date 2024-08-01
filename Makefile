@@ -1,16 +1,23 @@
 ### COMPILE ####################################################################
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -g3 -I $(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -g3 -I $(INC_DIR)
+
+### So I can work on my macbook ######################################################
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	CC = gcc
+endif
 
 ### LIBRARIES ###################################################################
 LIBFT_DIR = ../../circle1/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 ### NAME #########################################################################
-NAME = push_swap.a
+NAME = push_swap
 
 ### SRCS ###############################################################################
 SRC  = push_swap.c
+SRC += list_utils.c
 
 ### INC DIRECTORY #################################################################
 INC_DIR =./includes/
@@ -34,6 +41,9 @@ $(LIBFT) :
 $(NAME) : $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 
+noflags: clean
+	$(CC) $(SRC) -L$(LIBFT_DIR) -lft -o $(NAME)
+
 clean :
 	$(RM) $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -47,4 +57,5 @@ run : all
 
 re: fclean all
 
-.PHONY : all clean fclean run re
+
+.PHONY : all clean fclean run re noflags
