@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/07/31 21:11:05 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/03 16:40:32 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 
 typedef struct s_stack
 {
-	int				value;
+	long				value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
 }	t_stack;
 
 void	exit_and_print_errors(char *string);
-void	are_characters_valid(char *str);
+void	are_characters_valid(char **array);
 char	**str_args(char *str);
-void	value_to_list(long value);
-void	convert_and_append(char **array);
+void	value_to_list(t_stack **stack_a, long value);
+void	convert_and_append(t_stack **stack_a, char **array);
 t_stack	*create_node(int value);
 t_stack	*split_list(t_stack *head);
 
