@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/01 18:44:51 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/13 16:29:48 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,29 @@ t_stack	*create_node(int value)
 	return (node);
 }
 
-t_stack	*split_list(t_stack *head)
+void	stack_clear(t_stack **stack)
 {
-	t_stack	*fast;
-	t_stack	*slow;
-	t_stack	*second_half;
+	t_stack	*node;
+	t_stack	*tmp;
 
-	fast = head;
-	slow = head;
-	if (head == NULL || head->next == NULL)
-		return (NULL);
-	while (fast->next && fast->next->next)
+	node = *stack;
+	while (node)
 	{
-		fast = fast->next->next;
-		slow = slow->next;
+		tmp = node->next;
+		free(node);
+		node = tmp;
 	}
-	second_half = slow->next;
-	slow->next = NULL;
-	if (second_half)
-		second_half->prev = NULL;
-
-	return (second_half);
+	*stack = NULL;
 }
+
+// void	init_stacks(t_stacks *stacks)
+// {
+// 	stacks->stack_a = NULL;
+// 	stacks->stack_b = NULL;
+// }
+
+// void	clear_stacks(t_stacks *stacks)
+// {
+// 	stack_clear(&stacks->stack_a);
+// 	stack_clear(&stacks->stack_b);
+// }

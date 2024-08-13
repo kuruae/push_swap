@@ -1,11 +1,11 @@
 ### COMPILE ####################################################################
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -I $(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -O1 -g -I $(INC_DIR)
 
 ### So I can work on my macbook ######################################################
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	CC = gcc
+	CC = gcc-14
 endif
 
 ### LIBRARIES ###################################################################
@@ -18,6 +18,7 @@ NAME = push_swap
 ### SRCS ###############################################################################
 SRC  = push_swap.c
 SRC += list_utils.c
+SRC += sort.c
 
 ### INC DIRECTORY #################################################################
 INC_DIR =./includes/

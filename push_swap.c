@@ -6,32 +6,11 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/04 14:15:09 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/13 15:59:40 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/* int	check_repeating_digits(char *s)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] != '\0')
-			return (0);
-		j = (i + 1);
-		while (s[i] && s[i][ != s[j][0])
-			j++;
-		if (s[i][0] == s[j][0])
-			return (0);
-		else
-			i++;
-	}
-	return (1);
-} */
 
 void	exit_and_print_errors(char *string)
 {
@@ -51,7 +30,10 @@ void	are_characters_valid(char **array)
 		if (array[i][j] == '+' || array[i][j] == '-')
 		{
 			if (!array[i][j + 1])
+			{
+				ft_free_str_array(&array);
 				exit_and_print_errors("error: + or - alone");
+			}
 			j++;
 		}
 		while (array[i][j])
@@ -59,7 +41,10 @@ void	are_characters_valid(char **array)
 			if (ft_isdigit(array[i][j]) || ft_isspace(array[i][j]))
 				j++;
 			else
+			{
+				ft_free_str_array(&array);
 				exit_and_print_errors("error: non-numerical character");
+			}
 		}
 		i++;
 	}
@@ -82,19 +67,6 @@ char	**multiple_args(char **array)
 	return (array + 1);
 }
 
-/* int	parsing(char *inputs)
-{
-	char	**split_inputs;
-
-	split_inputs = ft_split(inputs, ' ');
-
-
-	if (!check_repeating_digits(split_inputs))
-		return (0);
-	else
-		return (1);
-} */
-
 void	value_to_list(t_stack **stack_a, long value)
 {
 	t_stack	*new_node;
@@ -102,7 +74,10 @@ void	value_to_list(t_stack **stack_a, long value)
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		new_node = ft_free_null(new_node);
+	{
+		free(new_node);
+		return ;
+	}
 	new_node->value = value;
 	new_node->next = NULL;
 	new_node->prev = NULL;
@@ -131,6 +106,27 @@ void	convert_and_append(t_stack **stack_a, char **array)
 	}
 }
 
+void	verify_repeating(t_stack *stack)
+{
+	t_stack	*compare;
+
+	while (stack)
+	{
+		compare = stack->next;
+		while (compare)
+		{
+			if (stack->value == compare->value)
+			{
+				stack_clear(&stack);
+				exit_and_print_errors("ERROR: repeating numbers entered.");
+			}
+			compare = compare->next;
+		}
+		stack = stack->next;
+	}
+	printf("No repeating.\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -147,6 +143,8 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		array = multiple_args(argv);
 	convert_and_append(&stack_a, array);
-	// verify_list(stack_a);
+	verify_repeating(stack_a);
+	// start_sorting(stack_a, stack_b);
+	stack_clear(&stack_a);
 	return (0);
 }
