@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -O1 -g -I $(INC_DIR)
 ### So I can work on my macbook ######################################################
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	CC = gcc-14
+	CC = cc
 endif
 
 ### LIBRARIES ###################################################################

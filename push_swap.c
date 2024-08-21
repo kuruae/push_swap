@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/13 15:59:40 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/16 20:18:39 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	exit_and_print_errors(char *string)
 {
-	printf("%s\n", string);
+	ft_printf("%s\n", string);
 	exit(1);
 }
 
-void	are_characters_valid(char **array)
+void	are_characters_valid(char **array, bool should_free)
 {
 	int	i;
 	int	j;
@@ -31,7 +31,8 @@ void	are_characters_valid(char **array)
 		{
 			if (!array[i][j + 1])
 			{
-				ft_free_str_array(&array);
+				if (should_free)
+					ft_free_str_array(&array);
 				exit_and_print_errors("error: + or - alone");
 			}
 			j++;
@@ -42,7 +43,8 @@ void	are_characters_valid(char **array)
 				j++;
 			else
 			{
-				ft_free_str_array(&array);
+				if (should_free)
+					ft_free_str_array(&array);
 				exit_and_print_errors("error: non-numerical character");
 			}
 		}
@@ -55,15 +57,15 @@ char	**str_args(char *str)
 	char	**array;
 
 	array = ft_split(str, ' ');
-	are_characters_valid(array);
-	printf("the string is valid\n");
+	are_characters_valid(array, true);
+	ft_printf("the string is valid\n");
 	return (array);
 }
 
 char	**multiple_args(char **array)
 {
-	are_characters_valid(array + 1);
-	printf("the string is valid\n");
+	are_characters_valid(array + 1, false);
+	ft_printf("the string is valid\n");
 	return (array + 1);
 }
 
@@ -91,17 +93,17 @@ void	value_to_list(t_stack **stack_a, long value)
 		current->next = new_node;
 		new_node->prev = current;
 	}
-	printf("node appended to stack a\n");
+	ft_printf("node appended to stack a\n");
 }
 
-void	convert_and_append(t_stack **stack_a, char **array)
+void	convert_and_append(t_stacks *stacks, char **array)
 {
 	int	i;
 
 	i = 0;
 	while (array[i])
 	{
-		value_to_list(stack_a, ft_atol(array[i]));
+		value_to_list(&(stacks->stack_a), ft_atol(array[i]));
 		i++;
 	}
 }
@@ -124,17 +126,15 @@ void	verify_repeating(t_stack *stack)
 		}
 		stack = stack->next;
 	}
-	printf("No repeating.\n");
+	ft_printf("No repeating.\n");
 }
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	// t_stack	*stack_b;
-	char	**array;
+	t_stacks	stacks;
+	char		**array;
 
-	stack_a = NULL;
-	// stack_b = NULL;
+	init_stacks(&stacks);
 	array = NULL;
 	if (argc == 1 || !argv[1][0])
 		exit_and_print_errors("invalid input: not enough arguments");
@@ -142,9 +142,10 @@ int	main(int argc, char **argv)
 		array = str_args(argv[1]);
 	else if (argc > 2)
 		array = multiple_args(argv);
-	convert_and_append(&stack_a, array);
-	verify_repeating(stack_a);
+	convert_and_append(&stacks, array);
+	verify_repeating(stacks.stack_a);
 	// start_sorting(stack_a, stack_b);
-	stack_clear(&stack_a);
+	clear_stacks(&stacks);
 	return (0);
 }
+

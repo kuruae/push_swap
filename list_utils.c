@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/13 16:29:48 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/13 20:18:15 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	stack_clear(t_stack **stack)
 	*stack = NULL;
 }
 
-// void	init_stacks(t_stacks *stacks)
-// {
-// 	stacks->stack_a = NULL;
-// 	stacks->stack_b = NULL;
-// }
+void	init_stacks(t_stacks *stacks)
+{
+	stacks->stack_a = NULL;
+	stacks->stack_b = NULL;
+}
 
-// void	clear_stacks(t_stacks *stacks)
-// {
-// 	stack_clear(&stacks->stack_a);
-// 	stack_clear(&stacks->stack_b);
-// }
+void	clear_stacks(t_stacks *stacks)
+{
+	stack_clear(&stacks->stack_a);
+	stack_clear(&stacks->stack_b);
+}
