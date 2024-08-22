@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/13 20:18:15 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/22 13:13:28 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	stack_clear(t_stack **stack)
 	*stack = NULL;
 }
 
-void	init_stacks(t_stacks *stacks)
+void	init_stacks(t_stack *stacks)
 {
-	stacks->stack_a = NULL;
-	stacks->stack_b = NULL;
+	stacks->a = NULL;
+	stacks->b = NULL;
 }
 
-void	clear_stacks(t_stacks *stacks)
+void	clear_stacks(t_stack *stacks)
 {
-	stack_clear(&stacks->stack_a);
-	stack_clear(&stacks->stack_b);
+	stack_clear(&stacks->a);
+	stack_clear(&stacks->b);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/16 20:18:39 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/22 14:21:22 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ void	value_to_list(t_stack **stack_a, long value)
 	ft_printf("node appended to stack a\n");
 }
 
-void	convert_and_append(t_stacks *stacks, char **array)
+void	convert_and_append(t_stack *stacks, char **array)
 {
 	int	i;
 
 	i = 0;
 	while (array[i])
 	{
-		value_to_list(&(stacks->stack_a), ft_atol(array[i]));
+		value_to_list(&(stacks->a), ft_atol(array[i]));
 		i++;
 	}
 }
@@ -131,20 +131,27 @@ void	verify_repeating(t_stack *stack)
 
 int	main(int argc, char **argv)
 {
-	t_stacks	stacks;
+	t_stack		stacks;
 	char		**array;
+	bool		should_free;
 
+	should_free = false;
 	init_stacks(&stacks);
 	array = NULL;
 	if (argc == 1 || !argv[1][0])
 		exit_and_print_errors("invalid input: not enough arguments");
 	else if (argc == 2)
+	{
+		should_free = true;
 		array = str_args(argv[1]);
+	}
 	else if (argc > 2)
 		array = multiple_args(argv);
 	convert_and_append(&stacks, array);
-	verify_repeating(stacks.stack_a);
-	// start_sorting(stack_a, stack_b);
+	verify_repeating(stacks.a);
+	start_sorting(&stacks);
+	if (should_free)
+		ft_free_str_array(&array);
 	clear_stacks(&stacks);
 	return (0);
 }

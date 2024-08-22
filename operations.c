@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 17:30:18 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/22 14:25:45 by emagnani         ###   ########.fr       */
+/*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
+/*   Updated: 2024/08/22 14:38:19 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	start_sorting(t_stack *stacks)
+void	swap(t_stack *stack, char a_or_b)
 {
-	if (ft_lstsize((t_list *)stacks->a) == 2)
-	{
-		if (stacks->a->value < stacks->a->next)
-			sa(stacks);
-	}
-	// else if (ft_lstsize((t_list *)stack.a) == 3)
-	// 	sort_three(stack_a, stack_b);
-	// else if (ft_lstsize((t_list *)stack.a) == 5)
-	// 	sort_five();
-	// else if (ft_lstsize((t_list *)stack.a) > 5)
+	t_stack	*temp;
+	long	temp_value;
+
+	temp = stack->a->next;
+	temp_value = stack->a->value;
+	stack->a->value = temp->value;
+	temp->value = temp_value;
+
+	if (stack->a->prev)
+		stack->a->prev->next = temp;
+	if (temp->next)
+		temp->next->prev = stack->a;
 }
