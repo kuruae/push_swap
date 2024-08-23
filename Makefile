@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror -O1 -g -I $(INC_DIR)
 ### to test different compilators on my macbook ################################
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)
-	CC = gcc-14
+	CC = cc
 endif
 
 ### LIBRARIES ##################################################################
@@ -19,19 +19,21 @@ NAME = push_swap
 SRC  = push_swap.c
 SRC += list_utils.c
 SRC += sort.c
+SRC += operations.c
 
 ### INC DIRECTORY ##############################################################
 INC_DIR =./includes/
 
 ### OBJ FILES ##################################################################
-OBJS := $(SRC:.c=.o)
+OBJ_DIR = objs
+OBJS := $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 
-### COMMANDS ###################################################################
+### COMMANDS ######################################################################
 RM   = rm -f
 
 ################################################################################
 
-%.o: %.c
+$(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
@@ -57,6 +59,3 @@ run : all
 	./$(NAME)
 
 re: fclean all
-
-
-.PHONY : all clean fclean run re noflags

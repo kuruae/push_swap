@@ -3,27 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/22 14:38:19 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:08:08 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack, char a_or_b)
+void	swap(t_stack *stack, char abc)
 {
-	t_stack	*temp;
-	long	temp_value;
+	long	temp;
 
-	temp = stack->a->next;
-	temp_value = stack->a->value;
-	stack->a->value = temp->value;
-	temp->value = temp_value;
-
-	if (stack->a->prev)
-		stack->a->prev->next = temp;
-	if (temp->next)
-		temp->next->prev = stack->a;
+	if (!stack || !stack->next)
+		return ;
+	temp = stack->value;
+	stack->value = stack->next->value;
+	stack->next->value = temp;
+	if (abc == 'a')
+		ft_printf("sa\n");
+	else if (abc == 'b')
+		ft_printf("sb\n");
+	else if (abc == 'c')
+		ft_printf("ss");
 }

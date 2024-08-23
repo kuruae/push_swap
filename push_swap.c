@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/22 14:21:22 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/23 17:08:41 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,10 +149,10 @@ int	main(int argc, char **argv)
 		array = multiple_args(argv);
 	convert_and_append(&stacks, array);
 	verify_repeating(stacks.a);
+	print_stack(stacks.a);
 	start_sorting(&stacks);
 	if (should_free)
 		ft_free_str_array(&array);
 	clear_stacks(&stacks);
 	return (0);
 }
-
