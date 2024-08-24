@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/23 17:08:41 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 19:58:49 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,17 @@ void	value_to_list(t_stack **stack_a, long value)
 
 void	convert_and_append(t_stack *stacks, char **array)
 {
-	int	i;
+	int		i;
+	long	n;
 
+	i = 0;
+	while (array[i])
+	{
+		n = ft_atol(array[i]);
+		if (n > INT_MAX || n < INT_MIN)
+			exit_and_print_errors("fdp");
+		i++;
+	}
 	i = 0;
 	while (array[i])
 	{
