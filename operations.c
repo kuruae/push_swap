@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/23 17:08:08 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/23 20:03:42 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,12 @@ void	swap(t_stack *stack, char abc)
 		ft_printf("sb\n");
 	else if (abc == 'c')
 		ft_printf("ss");
+}
+
+void	push(t_stack *stack, char ab)
+{
+	long	temp;
+	if (!stack->b)
+		return ;
+	
 }
