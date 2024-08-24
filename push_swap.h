@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/23 16:57:16 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 15:33:21 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	init_stacks(t_stack *stacks);
 void	clear_stacks(t_stack *stacks);
 void	swap(t_stack *stack, char abc);
 void	print_stack(t_stack *stack);
+void	sort_3(t_stack *stack);
 
 #endif

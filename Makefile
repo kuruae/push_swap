@@ -20,6 +20,7 @@ SRC  = push_swap.c
 SRC += list_utils.c
 SRC += sort.c
 SRC += operations.c
+SRC += sort_3_to_5.c
 
 ### INC DIRECTORIES ############################################################
 INC_DIR =./includes/
