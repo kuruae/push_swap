@@ -6,7 +6,7 @@
 /*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/24 14:56:30 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/24 15:54:34 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,4 @@ void	print_stack(t_stack *stack)
 		ft_printf("%d\n", nbr);
 		stack = stack->next;
 	}
-}
-
-void	del_first_node(t_stack **stack)
-{
-	t_stack delete 
-	if (!stack)
-		return ;
-	
 }

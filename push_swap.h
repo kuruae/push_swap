@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/24 15:33:21 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 16:28:19 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ void	start_sorting(t_stack *stack);
 void	init_stacks(t_stack *stacks);
 void	clear_stacks(t_stack *stacks);
 void	swap(t_stack *stack, char abc);
+void	push(t_stack **stack, char ab);
+void	pa(t_stack **stack);
+void	pb(t_stack **stack);
 void	print_stack(t_stack *stack);
-void	sort_3(t_stack *stack);
+void	sort_3(t_stack **stack);
 
 #endif

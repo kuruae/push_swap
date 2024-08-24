@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/24 15:31:01 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 17:11:28 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,21 @@ void	swap(t_stack *stack, char abc)
 		ft_printf("ss");
 }
 
-void	pa(t_stack **stack, char ab)
+void	push(t_stack **stack, char ab)
+{
+	if (ab == 'a')
+	{
+		pa(stack);
+		ft_printf("pa");
+	}
+	if (ab == 'b')
+	{
+		pb(stack);
+		ft_printf("pb");
+	}
+}
+
+void	pa(t_stack **stack)
 {
 	long	temp;
 	t_stack	*del;
@@ -40,49 +54,42 @@ void	pa(t_stack **stack, char ab)
 	temp = (*stack)->b->value;
 	del = (*stack)->b;
 	(*stack)->b = (*stack)->b->next;
-	if (!(*stack)->b)
+	if ((*stack)->b != NULL)
 		(*stack)->b->prev = NULL;
 	free(del);
 	new = malloc(sizeof(t_stack));
 	if (!new)
-	{
-		free(new);
 		new = NULL;
-		return ;
-	}
 	new->value = temp;
 	new->next = (*stack)->a;
 	new->prev = NULL;
-	if (!(*stack)->a)
+	if ((*stack)->a != NULL)
 		(*stack)->a->prev = new;
 	(*stack)->a = new;
 }
 
-void	pb(t_stack **stack, char ab)
+void	pb(t_stack **stack)
 {
 	long	temp;
 	t_stack	*del;
 	t_stack	*new;
 
+	print_stack((*stack)->a);
 	if (!(*stack)->a)
 		return ;
 	temp = (*stack)->a->value;
 	del = (*stack)->a;
 	(*stack)->a = (*stack)->a->next;
-	if (!(*stack)->a)
+	if ((*stack)->a != NULL)
 		(*stack)->a->prev = NULL;
 	free(del);
 	new = malloc(sizeof(t_stack));
 	if (!new)
-	{
-		free(new);
 		new = NULL;
-		return ;
-	}
 	new->value = temp;
 	new->next = (*stack)->b;
 	new->prev = NULL;
-	if (!(*stack)->b)
+	if ((*stack)->b != NULL)
 		(*stack)->b->prev = new;
 	(*stack)->b = new;
 }
