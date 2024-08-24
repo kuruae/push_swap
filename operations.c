@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/23 20:03:42 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 15:09:32 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,31 @@ void	swap(t_stack *stack, char abc)
 		ft_printf("ss");
 }
 
-void	push(t_stack *stack, char ab)
+void	push(t_stack **stack, char ab)
 {
 	long	temp;
-	if (!stack->b)
+	t_stack	*del;
+	t_stack	*new;
+
+	if (!(*stack)->b)
 		return ;
-	
+	temp = (*stack)->b->value;
+	del = (*stack)->b;
+	(*stack)->b = (*stack)->b->next;
+	if (!(*stack)->b)
+		(*stack)->b->prev = NULL;
+	free(del);
+	new = malloc(sizeof(t_stack));
+	if (!new)
+	{
+		free(new);
+		new = NULL;
+		return ;
+	}
+	new->value = temp;
+	new->next = (*stack)->a;
+	new->prev = NULL;
+	if (!(*stack)->a)
+		(*stack)->a->prev = new;
+	(*stack)->a = new;
 }

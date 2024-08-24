@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/23 15:05:39 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/24 14:56:30 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,3 +62,10 @@ void	print_stack(t_stack *stack)
 	}
 }
 
+void	del_first_node(t_stack **stack)
+{
+	t_stack delete 
+	if (!stack)
+		return ;
+	
+}
