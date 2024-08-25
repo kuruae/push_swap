@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/24 16:28:19 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/25 17:14:15 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ void	pa(t_stack **stack);
 void	pb(t_stack **stack);
 void	print_stack(t_stack *stack);
 void	sort_3(t_stack **stack);
+void	rotate(t_stack **stack, char abc);
+void	rotate_single(t_stack **stack);
 
 #endif

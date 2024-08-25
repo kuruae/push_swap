@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:30:23 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/25 02:07:57 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/25 16:27:26 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	sort_3(t_stack **stack)
 	if ((*stack)->a->value > (*stack)->a->next->value)
 		swap((*stack)->a, 'a');
 	push(&*stack, 'a');
-	// else if ((*stack)->a->value > (*stack)->a->next->next->value))
-	// 	rotate((*stack)->a, 'a');
+	if ((*stack)->a->value > (*stack)->a->next->next->value)
+		rotate(stack, 'a');
 	if ((*stack)->a->value > (*stack)->a->next->value)
 		swap((*stack)->a, 'a');
 	ft_printf("sorted 3:\n");
