@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/24 17:11:28 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/25 02:07:14 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	push(t_stack **stack, char ab)
 	if (ab == 'a')
 	{
 		pa(stack);
-		ft_printf("pa");
+		ft_printf("pa\n");
 	}
 	if (ab == 'b')
 	{
 		pb(stack);
-		ft_printf("pb");
+		ft_printf("pb\n");
 	}
 }
 
@@ -74,7 +74,6 @@ void	pb(t_stack **stack)
 	t_stack	*del;
 	t_stack	*new;
 
-	print_stack((*stack)->a);
 	if (!(*stack)->a)
 		return ;
 	temp = (*stack)->a->value;
