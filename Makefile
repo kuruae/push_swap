@@ -19,7 +19,8 @@ NAME = push_swap
 SRC  = push_swap.c
 SRC += list_utils.c
 SRC += sort.c
-SRC += operations.c
+SRC += push.c
+SRC += swap_rotate.c
 SRC += sort_3_to_5.c
 
 ### INC DIRECTORIES ############################################################
