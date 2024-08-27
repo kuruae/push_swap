@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/26 22:15:34 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/27 18:27:19 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	swap(t_stack *stack, char abc)
 
 void	rotate(t_stack **stack, char abc)
 {
-	if (abc == 'a')
+	if (abc == 'a' && (*stack)->a)
 	{
 		rotate_single(&((*stack)->a));
 		ft_printf("ra\n");
 	}
-	if (abc == 'b')
+	if (abc == 'b' && (*stack)->b)
 	{
 		rotate_single(&((*stack)->b));
 		ft_printf("rb\n");

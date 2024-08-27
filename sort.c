@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/27 12:10:38 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:29:14 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	radix_sort(t_stack *stacks)
 		j = 0;
 		while (j++ < size)
 		{
-			if (((stacks->a->index >> i) & 1) == 0)
+			if (((stacks->a->index >> i) & 1) == 1)
 				rotate(&stacks, 'a');
 			else
 				push(&stacks, 'b');
