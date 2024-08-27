@@ -1,102 +1,76 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 17:30:18 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/27 03:23:00 by enzo             ###   ########.fr       */
+/*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
+/*   Updated: 2024/08/27 01:36:22 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	start_sorting(t_stack *stacks)
+t_stack	*create_node(int value)
 {
-	int	size;
+	t_stack	*node;
 
-	size = stack_size(stacks->a);
-	indexing(stacks->a);
-	if (size == 1)
-		return ;
-	if (size == 2)
-	{
-		if (stacks->a->value > stacks->a->next->value)
-			swap(stacks->a, 'a');
-	}
-	else if (size == 3)
-		sort_3(&stacks);
-	else if (size <= 5)
-		sort_5(stacks);
-	else
-		radix_sort(stacks);
-	print_stack(stacks->a);
+	node = malloc(sizeof(t_stack) * 1);
+	node->value = value;
+	node->next = NULL;
+	node->prev = NULL;
+	return (node);
 }
 
-int	get_max_bits(t_stack *stack)
+void	stack_clear(t_stack **stack)
 {
-	int	max;
-	int	max_bits;
+	t_stack	*node;
+	t_stack	*tmp;
 
-	max = stack->index;
-	max_bits = 0;
+	node = *stack;
+	while (node)
+	{
+		tmp = node->next;
+		free(node);
+		node = tmp;
+	}
+	*stack = NULL;
+}
+
+void	init_stacks(t_stack *stacks)
+{
+	stacks->a = NULL;
+	stacks->b = NULL;
+}
+
+void	clear_stacks(t_stack *stacks)
+{
+	stack_clear(&stacks->a);
+	stack_clear(&stacks->b);
+}
+
+void	print_stack(t_stack *stack)
+{
+	long	nbr;
+
 	while (stack)
 	{
-		if (stack->index > max)
-			max = stack->index;
+		nbr = stack->value;
+		ft_printf("%d\n", nbr);
 		stack = stack->next;
 	}
-	while ((max >> max_bits) != 0)
-		max_bits++;
-	return (max_bits);
 }
 
-void	indexing(t_stack *stack)
+int	stack_size(t_stack *stack)
 {
-	t_stack	*current;
-	t_stack	*min;
-	long	index;
+	int	len;
 
-	index = 0;
-	while (1)
+	len = 0;
+	while (stack)
 	{
-		current = stack;
-		min = NULL;
-		while (current)
-		{
-			if (current->index == -1 && (!min || current->value < min-> value))
-				min = current;
-			current = current->next;
-		}
-		if (!min)
-			break ;
-		min->index = index++;
+		stack = stack->next;
+		len++;
 	}
-}
-
-void	radix_sort(t_stack *stacks)
-{
-	int	i;
-	int	j;
-	int	size;
-	int	max_bits;
-
-	size = stack_size(stacks->a);
-	max_bits = get_max_bits(stacks->a);
-	i = 0;
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j++ < size)
-		{
-			if (((stacks->a->index >> i) & 1) == 1)
-				rotate(&stacks, 'a');
-			else
-				push(&stacks, 'b');
-		}
-		while (stack_size(stacks->b) != 0)
-			push(&stacks, 'a');
-		i++;
-	}
+	return (len);
 }
