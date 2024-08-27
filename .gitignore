@@ -57,9 +57,6 @@ tmp/
 .AppleDouble
 .LSOverride
 
-# Thumbnails
-._*
-
 # Windows specific files
 Thumbs.db
 ehthumbs.db
