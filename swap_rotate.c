@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   swap_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/25 17:50:45 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/26 22:15:34 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,39 +66,3 @@ void	rotate_single(t_stack **stack)
 	first->prev = last;
 	first->next = NULL;
 }
-
-// void	ra(t_stack **stack)
-// {
-// 	t_stack	*first;
-// 	t_stack	*last;
-
-// 	if (!(*stack) || !(*stack)->a || !(*stack)->a->next)
-// 		return ;
-// 	first = (*stack)->a;
-// 	last = (*stack)->a;
-// 	while (last->next)
-// 		last = last->next;
-// 	(*stack)->a = first->next;
-// 	(*stack)->a->prev = NULL;
-// 	last->next = first;
-// 	first->prev = last;
-// 	first->next = NULL;
-// }
-
-// void	rb(t_stack **stack)
-// {
-// 	t_stack	*first;
-// 	t_stack	*last;
-
-// 	if (!(*stack) || !(*stack)->b || !(*stack)->b->next)
-// 		return ;
-// 	first = (*stack)->b;
-// 	last = (*stack)->b;
-// 	while (last->next)
-// 		last = last->next;
-// 	(*stack)->b = first->next;
-// 	(*stack)->b->prev = NULL;
-// 	last->next = first;
-// 	first->prev = last;
-// 	first->next = NULL;
-// }

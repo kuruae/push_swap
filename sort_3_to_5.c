@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:30:23 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/25 16:27:26 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/27 02:13:23 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,28 @@ void	sort_3(t_stack **stack)
 		rotate(stack, 'a');
 	if ((*stack)->a->value > (*stack)->a->next->value)
 		swap((*stack)->a, 'a');
-	ft_printf("sorted 3:\n");
-	print_stack((*stack)->a);
+}
+
+void	sort_5(t_stack *stacks)
+{
+	t_stack	*min;
+	t_stack	*current;
+
+	while (stack_size(stacks->a) > 3)
+	{
+		min = stacks->a;
+		current = stacks->a;
+		while (current)
+		{
+			if (current->value < min->value)
+				min = current;
+			current = current->next;
+		}
+		while (stacks->a != min)
+			rotate(&stacks, 'a');
+		push(&stacks, 'b');
+	}
+	sort_3(&stacks);
+	while (stacks->b)
+		push(&stacks, 'a');
 }

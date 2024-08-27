@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/25 17:14:15 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/27 02:59:56 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_stack
 {
+	int				index;
 	long			value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
@@ -41,11 +42,16 @@ void	init_stacks(t_stack *stacks);
 void	clear_stacks(t_stack *stacks);
 void	swap(t_stack *stack, char abc);
 void	push(t_stack **stack, char ab);
+void	rotate(t_stack **stack, char abc);
 void	pa(t_stack **stack);
 void	pb(t_stack **stack);
 void	print_stack(t_stack *stack);
 void	sort_3(t_stack **stack);
-void	rotate(t_stack **stack, char abc);
+void	sort_5(t_stack *stacks);
 void	rotate_single(t_stack **stack);
+void	radix_sort(t_stack *stacks);
+int		get_max_bits(t_stack *stack);
+int		stack_size(t_stack *stack);
+void	indexing(t_stack *stack);
 
 #endif

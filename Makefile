@@ -1,6 +1,6 @@
 ### COMPILE ####################################################################
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -O1 -g -I $(INC_DIR)
+CFLAGS = -Wall -Wextra -Werror -g -I $(INC_DIR)
 
 ### to test different compilators on my macbook ################################
 UNAME_S := $(shell uname -s)
@@ -22,6 +22,9 @@ SRC += sort.c
 SRC += push.c
 SRC += swap_rotate.c
 SRC += sort_3_to_5.c
+SRC += parsing1.c
+SRC += parsing2.c
+
 
 ### INC DIRECTORIES ############################################################
 INC_DIR =./includes/
