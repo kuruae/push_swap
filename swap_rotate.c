@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/27 18:27:19 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/28 20:41:42 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	rotate(t_stack **stack, char abc)
 		rotate_single(&((*stack)->b));
 		ft_printf("rb\n");
 	}
-	if (abc == 'c')
+	if (abc == 'c' && (*stack)->a && (*stack)->b)
 	{
 		rotate_single(&((*stack)->a));
 		rotate_single(&((*stack)->b));
@@ -65,4 +65,50 @@ void	rotate_single(t_stack **stack)
 	last->next = first;
 	first->prev = last;
 	first->next = NULL;
+}
+
+void	reverse_rotate(t_stack **stack, char abc)
+{
+	if (abc == 'a' && (*stack)->a)
+	{
+		rotate_single(&((*stack)->a));
+		ft_printf("rra\n");
+	}
+	if (abc == 'b' && (*stack)->b)
+	{
+		rotate_single(&((*stack)->b));
+		ft_printf("rrb\n");
+	}
+	if (abc == 'c' && (*stack)->a && (*stack)->b)
+	{
+		rotate_single(&((*stack)->a));
+		rotate_single(&((*stack)->b));
+		ft_printf("rrr\n");
+	}
+}
+
+void	reverse_rotate_single(t_stack **stack)
+{
+	t_stack	*first;
+	t_stack	*last;
+	t_stack	*second_last;
+
+	if (!*stack || !(*stack)->next)
+		return ;
+
+	first = *stack;
+	last = *stack;
+	second_last = NULL;
+
+	while (last->next)
+	{
+		second_last = last;
+		last = last->next;
+	}
+
+	*stack = last;
+	(*stack)->prev = NULL;
+	(*stack)->next = first;
+	first->prev = *stack;
+	second_last->next = NULL;
 }

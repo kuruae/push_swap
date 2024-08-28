@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/27 01:36:22 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/27 21:54:23 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ void	clear_stacks(t_stack *stacks)
 {
 	stack_clear(&stacks->a);
 	stack_clear(&stacks->b);
-}
-
-void	print_stack(t_stack *stack)
-{
-	long	nbr;
-
-	while (stack)
-	{
-		nbr = stack->value;
-		ft_printf("%d\n", nbr);
-		stack = stack->next;
-	}
 }
 
 int	stack_size(t_stack *stack)

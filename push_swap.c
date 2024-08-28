@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/27 03:22:55 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/27 21:55:02 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@ void	exit_and_print_errors(char *string)
 {
 	ft_printf("%s\n", string);
 	exit(1);
+}
+
+void	print_stack(t_stack *stack)
+{
+	long	nbr;
+
+	while (stack)
+	{
+		nbr = stack->value;
+		ft_printf("%d\n", nbr);
+		stack = stack->next;
+	}
 }
 
 int	main(int argc, char **argv)

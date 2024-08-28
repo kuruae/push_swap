@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/27 18:29:14 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/28 22:11:31 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,31 @@ void	indexing(t_stack *stack)
 	}
 }
 
+void	radix_sort_pass(t_stack *stacks, int bit, int size)
+{
+	int	j;
+	int	pushed;
+
+	j = 0;
+	pushed = 0;
+	while (j < size)
+	{
+		if (((stacks->a->index >> bit) & 1) == 0)
+		{
+			push(&stacks, 'b');
+			pushed++;
+		}
+		else
+			rotate(&stacks, 'a');
+		j++;
+	}
+	while (pushed--)
+		push(&stacks, 'a');
+}
+
 void	radix_sort(t_stack *stacks)
 {
 	int	i;
-	int	j;
 	int	size;
 	int	max_bits;
 
@@ -86,16 +107,60 @@ void	radix_sort(t_stack *stacks)
 	i = 0;
 	while (i < max_bits)
 	{
-		j = 0;
-		while (j++ < size)
-		{
-			if (((stacks->a->index >> i) & 1) == 1)
-				rotate(&stacks, 'a');
-			else
-				push(&stacks, 'b');
-		}
-		while (stack_size(stacks->b) != 0)
-			push(&stacks, 'a');
+		if (is_sorted(stacks->a))
+			break ;
+		radix_sort_pass(stacks, i, size);
 		i++;
 	}
+}
+
+// void	push_and_rotate(t_stack **stacks, int *num_to_push, int *ra_count)
+// {
+// 	if (*num_to_push > 0 && ((*stacks)->b->index < (*stacks)->a->index
+// 		|| *ra_count == stack_size((*stacks)->a) - 1))
+// 	{
+// 		push(stacks, 'a');
+// 		(*num_to_push)--;
+// 	}
+// 	else
+// 	{
+// 		rotate(stacks, 'a');
+// 		(*ra_count)++;
+// 	}
+// }
+
+// void	optimized_push_back(t_stack **stacks, int num_to_push)
+// {
+// 	int	ra_count;
+// 	int	total_size;
+
+// 	ra_count = 0;
+// 	total_size = stack_size((*stacks)->a) + num_to_push;
+// 	while (num_to_push > 0)
+// 	{
+// 		push_and_rotate(stacks, &num_to_push, &ra_count);
+// 		if (ra_count >= total_size)
+// 			break ;
+// 	}
+// 	while (num_to_push > 0)
+// 	{
+// 		push(stacks, 'a');
+// 		num_to_push--;
+// 	}
+// 	while (ra_count > 0 && (*stacks)->a->index > (*stacks)->a->next->index)
+// 	{
+// 		reverse_rotate(stacks, 'a');
+// 		ra_count--;
+// 	}
+// }
+
+bool	is_sorted(t_stack *stack)
+{
+	while (stack && stack->next)
+	{
+		if (stack->index > stack->next->index)
+			return (false);
+		stack = stack->next;
+	}
+	return (true);
 }
