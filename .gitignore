@@ -41,7 +41,6 @@
 *.log
 
 # Folders to ignore
-objs/
 build/
 bin/
 tmp/
