@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 17:22:36 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/28 23:20:56 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/29 16:34:26 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	start_sorting(t_stack *stacks)
 	int	size;
 
 	size = stack_size(stacks->a);
+	if (is_sorted(stacks))
+		return ;
 	indexing(stacks->a);
 	if (size == 1)
 		return ;
@@ -31,7 +33,6 @@ void	start_sorting(t_stack *stacks)
 		sort_5(stacks);
 	else
 		radix_sort(stacks);
-	print_stack(stacks->a);
 }
 
 int	get_max_bits(t_stack *stack)
@@ -97,5 +98,23 @@ void	radix_sort(t_stack *stacks)
 		while (stack_size(stacks->b) != 0)
 			push(&stacks, 'a');
 		i++;
+		if (is_sorted(stacks))
+			return ;
 	}
+}
+
+bool	is_sorted(t_stack *stack)
+{
+	t_stack	*current;
+
+	if (stack->b != NULL)
+		return (false);
+	current = stack->a;
+	while (current && current->next)
+	{
+		if (current->value > current->next->value)
+			return (false);
+		current = current->next;
+	}
+	return (true);
 }

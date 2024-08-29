@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:30:23 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/27 02:13:23 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/29 16:56:26 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,30 @@
 
 void	sort_3(t_stack **stack)
 {
-	push(&*stack, 'b');
-	if ((*stack)->a->value > (*stack)->a->next->value)
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack)->a->value;
+	b = (*stack)->a->next->value;
+	c = (*stack)->a->next->next->value;
+
+	if (a > b && b < c && a < c)
 		swap((*stack)->a, 'a');
-	push(&*stack, 'a');
-	if ((*stack)->a->value > (*stack)->a->next->next->value)
+	else if (a > b && b > c)
+	{
+		swap((*stack)->a, 'a');
+		reverse_rotate(stack, 'a');
+	}
+	else if (a > b && b < c && a > c)
 		rotate(stack, 'a');
-	if ((*stack)->a->value > (*stack)->a->next->value)
+	else if (a < b && b > c && a < c)
+	{
 		swap((*stack)->a, 'a');
+		rotate(stack, 'a');
+	}
+	else if (a < b && b > c && a > c)
+		reverse_rotate(stack, 'a');
 }
 
 void	sort_5(t_stack *stacks)
@@ -46,4 +62,6 @@ void	sort_5(t_stack *stacks)
 	sort_3(&stacks);
 	while (stacks->b)
 		push(&stacks, 'a');
+	if (stacks->a->value > stacks->a->next->value)
+		swap(stacks->a, 'a');
 }

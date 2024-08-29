@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/28 20:41:42 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:18:50 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,14 @@ void	reverse_rotate_single(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-
 	first = *stack;
 	last = *stack;
 	second_last = NULL;
-
 	while (last->next)
 	{
 		second_last = last;
 		last = last->next;
 	}
-
 	*stack = last;
 	(*stack)->prev = NULL;
 	(*stack)->next = first;

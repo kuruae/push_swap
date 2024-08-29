@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 01:54:43 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/27 21:58:00 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:58:32 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_sign(char **array, int i, bool should_free)
 		{
 			if (should_free)
 				ft_free_str_array(&array);
-			exit_and_print_errors("error: + or - alone");
+			exit_and_print_errors();
 		}
 	}
 }
@@ -43,7 +43,7 @@ void	are_characters_valid(char **array, bool should_free)
 			{
 				if (should_free)
 					ft_free_str_array(&array);
-				exit_and_print_errors("error: non-numerical character");
+				exit_and_print_errors();
 			}
 			j++;
 		}

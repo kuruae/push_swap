@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 01:54:30 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/27 21:54:50 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/29 15:58:16 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	convert_and_append(t_stack *stacks, char **array)
 	{
 		n = ft_atol(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			exit_and_print_errors("fdp");
+			exit_and_print_errors();
 		i++;
 	}
 	i = 0;
@@ -71,7 +71,7 @@ void	verify_repeating(t_stack *stack)
 			if (stack->value == compare->value)
 			{
 				stack_clear(&stack);
-				exit_and_print_errors("ERROR: repeating numbers entered.");
+				exit_and_print_errors();
 			}
 			compare = compare->next;
 		}
