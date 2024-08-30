@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/29 15:57:59 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/30 11:38:44 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ int		stack_size(t_stack *stack);
 void	indexing(t_stack *stack);
 void	reverse_rotate_single(t_stack **stack);
 void	reverse_rotate(t_stack **stack, char abc);
-void	optimize_rotations(t_stack **stacks);
-void	push_and_rotate(t_stack **stacks, int *num_to_push, int *ra_count);
-void	optimized_push_back(t_stack **stacks, int num_to_push);
 bool	is_sorted(t_stack *stacks);
+int		rotate_or_rev(t_stack *stack, t_stack *node);
 
 #endif

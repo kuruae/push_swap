@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 14:26:54 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/29 15:18:50 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/30 11:38:30 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,18 @@ void	reverse_rotate(t_stack **stack, char abc)
 {
 	if (abc == 'a' && (*stack)->a)
 	{
-		rotate_single(&((*stack)->a));
+		reverse_rotate_single(&((*stack)->a));
 		ft_printf("rra\n");
 	}
 	if (abc == 'b' && (*stack)->b)
 	{
-		rotate_single(&((*stack)->b));
+		reverse_rotate_single(&((*stack)->b));
 		ft_printf("rrb\n");
 	}
 	if (abc == 'c' && (*stack)->a && (*stack)->b)
 	{
-		rotate_single(&((*stack)->a));
-		rotate_single(&((*stack)->b));
+		reverse_rotate_single(&((*stack)->a));
+		reverse_rotate_single(&((*stack)->b));
 		ft_printf("rrr\n");
 	}
 }
