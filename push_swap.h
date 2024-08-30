@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/30 11:38:44 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/30 15:43:40 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	**multiple_args(char **array);
 void	value_to_list(t_stack **stack_a, long value);
 void	convert_and_append(t_stack *stacks, char **array);
 t_stack	*create_node(int value);
-t_stack	*split_list(t_stack *head);
 void	verify_repeating(t_stack *stack);
 void	stack_clear(t_stack **stack);
 void	start_sorting(t_stack *stack);
@@ -58,5 +57,6 @@ void	reverse_rotate_single(t_stack **stack);
 void	reverse_rotate(t_stack **stack, char abc);
 bool	is_sorted(t_stack *stacks);
 int		rotate_or_rev(t_stack *stack, t_stack *node);
+void	find_min_and_rotate(t_stack *stacks);
 
 #endif

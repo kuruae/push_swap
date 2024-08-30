@@ -6,7 +6,7 @@
 /*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 17:30:23 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/30 11:49:45 by enzo             ###   ########.fr       */
+/*   Updated: 2024/08/30 15:45:34 by enzo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,31 +58,36 @@ int	rotate_or_rev(t_stack *stack, t_stack *node)
 	return (2);
 }
 
-void	sort_5(t_stack *stacks)
+void	find_min_and_rotate(t_stack *stacks)
 {
 	t_stack	*min;
 	t_stack	*current;
 	int		rotation;
 
+	min = stacks->a;
+	current = stacks->a;
+	while (current)
+	{
+		if (current->value < min->value)
+			min = current;
+		current = current->next;
+	}
+	rotation = rotate_or_rev(stacks->a, min);
+	while (stacks->a != min)
+	{
+		if (rotation == 1)
+			rotate(&stacks, 'a');
+		else
+			reverse_rotate(&stacks, 'a');
+	}
+	push(&stacks, 'b');
+}
+
+void	sort_5(t_stack *stacks)
+{
 	while (stack_size(stacks->a) > 3)
 	{
-		min = stacks->a;
-		current = stacks->a;
-		while (current)
-		{
-			if (current->value < min->value)
-				min = current;
-			current = current->next;
-		}
-		rotation = rotate_or_rev(stacks->a, min);
-		while (stacks->a != min)
-		{
-			if (rotation == 1)
-				rotate(&stacks, 'a');
-			else
-				reverse_rotate(&stacks, 'a');
-		}
-		push(&stacks, 'b');
+		find_min_and_rotate(stacks);
 	}
 	sort_3(&stacks);
 	while (stacks->b)
