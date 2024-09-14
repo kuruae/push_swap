@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 01:54:30 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/29 15:58:16 by enzo             ###   ########.fr       */
+/*   Updated: 2024/09/14 13:27:13 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	value_to_list(t_stack **stack_a, long value)
 	}
 }
 
-void	convert_and_append(t_stack *stacks, char **array)
+void	convert_and_append(t_stack *stacks, char **array, bool should_free)
 {
 	int		i;
 	long	n;
@@ -48,7 +48,11 @@ void	convert_and_append(t_stack *stacks, char **array)
 	{
 		n = ft_atol(array[i]);
 		if (n > INT_MAX || n < INT_MIN)
+		{
+			if (should_free)
+				ft_free_str_array(&array);
 			exit_and_print_errors();
+		}
 		i++;
 	}
 	i = 0;
@@ -59,7 +63,7 @@ void	convert_and_append(t_stack *stacks, char **array)
 	}
 }
 
-void	verify_repeating(t_stack *stack)
+bool	verify_repeating(t_stack *stack)
 {
 	t_stack	*compare;
 
@@ -70,11 +74,12 @@ void	verify_repeating(t_stack *stack)
 		{
 			if (stack->value == compare->value)
 			{
-				stack_clear(&stack);
-				exit_and_print_errors();
+				ft_putendl_fd("Error", 2);
+				return (false);
 			}
 			compare = compare->next;
 		}
 		stack = stack->next;
 	}
+	return (true);
 }

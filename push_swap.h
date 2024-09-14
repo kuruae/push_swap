@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:07:07 by emagnani          #+#    #+#             */
-/*   Updated: 2024/08/30 15:43:40 by enzo             ###   ########.fr       */
+/*   Updated: 2024/09/14 13:14:18 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../../circle1/libft/includes/libft.h"
-# include "../../circle1/libft/includes/ft_printf.h"
+# include "libft/includes/libft.h"
+# include "libft/includes/ft_printf.h"
 # include <stdbool.h>
 
 typedef struct s_stack
@@ -33,9 +33,9 @@ void	are_characters_valid(char **array, bool should_free);
 char	**str_args(char *str);
 char	**multiple_args(char **array);
 void	value_to_list(t_stack **stack_a, long value);
-void	convert_and_append(t_stack *stacks, char **array);
+void	convert_and_append(t_stack *stacks, char **array, bool should_free);
 t_stack	*create_node(int value);
-void	verify_repeating(t_stack *stack);
+bool	verify_repeating(t_stack *stack);
 void	stack_clear(t_stack **stack);
 void	start_sorting(t_stack *stack);
 void	init_stacks(t_stack *stacks);

@@ -9,7 +9,7 @@ ifeq ($(UNAME_S),Darwin)
 endif
 
 ### LIBRARIES ##################################################################
-LIBFT_DIR = ../../circle1/libft
+LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 ### NAME #######################################################################

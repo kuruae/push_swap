@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enzo <enzo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:21:33 by enzo              #+#    #+#             */
-/*   Updated: 2024/08/29 16:08:06 by enzo             ###   ########.fr       */
+/*   Updated: 2024/09/14 13:15:52 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	init_stacks(&stacks);
 	array = NULL;
 	if (argc == 1 || !argv[1][0])
-		exit_and_print_errors();
+		return (0);
 	else if (argc == 2)
 	{
 		should_free = true;
@@ -48,9 +48,9 @@ int	main(int argc, char **argv)
 	}
 	else if (argc > 2)
 		array = multiple_args(argv);
-	convert_and_append(&stacks, array);
-	verify_repeating(stacks.a);
-	start_sorting(&stacks);
+	convert_and_append(&stacks, array, should_free);
+	if (verify_repeating(stacks.a))
+		start_sorting(&stacks);
 	if (should_free)
 		ft_free_str_array(&array);
 	clear_stacks(&stacks);
