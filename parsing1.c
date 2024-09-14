@@ -6,7 +6,7 @@
 /*   By: emagnani <emagnani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 01:54:43 by enzo              #+#    #+#             */
-/*   Updated: 2024/09/14 18:21:14 by emagnani         ###   ########.fr       */
+/*   Updated: 2024/09/14 18:24:35 by emagnani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ char	**str_args(char *str)
 {
 	char	**array;
 
-	int i = 0;
-	while (str[i++] == ' ')
-	{
-		if (str[i] == '\0')
-			exit_and_print_errors();
-	}
 	array = ft_split(str, ' ');
 	are_characters_valid(array, true);
 	return (array);
